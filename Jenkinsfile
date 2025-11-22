@@ -1,11 +1,11 @@
 pipeline {
-    sh "set agent to any"
+    echo "set agent to any"
     agent any
 
 
     stages {
         stage('Build') {
-            sh "start Build stage"
+            echo "start Build stage"
             steps {
                 sh './gradlew clean build'
             }
@@ -20,7 +20,7 @@ pipeline {
                              fingerprint: true
 
             // Публикуем результаты тестов (если они есть)
-            sh "test results"
+            echo "test results"
             junit testResults: '**/build/test-results/test/*.xml',
                   allowEmptyResults: true
         }
